@@ -18,7 +18,7 @@ namespace HotelApp.Entities
         public DateTime ArrivalDate { get; set; }
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime DepartureDate { get; set; }
-        public decimal TotalCost;
+        public decimal TotalCost { get; set; }
         public int? RoomId { get; set; }
         public virtual Room Room { get; set; }
     }
