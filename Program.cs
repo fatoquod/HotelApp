@@ -1,11 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
+using HotelApp.DataAccess;
+using HotelApp.Extensions;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace HotelApp
 {
@@ -13,7 +10,8 @@ namespace HotelApp
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            CreateHostBuilder(args).Build().MigrateDatabase<HotelContext>().Run();
+            
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>

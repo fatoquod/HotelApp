@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace HotelApp.Entities
+namespace HotelApp.DataAccess.Entities
 {
     public class Room
     {
@@ -14,6 +14,5 @@ namespace HotelApp.Entities
         public int? RoomStateId { get; set; }
         public virtual RoomState RoomState { get; set; }
         public ICollection<Visitor> Visitors { get; set; }
-        
     }
 }

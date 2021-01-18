@@ -1,8 +1,6 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using Microsoft.EntityFrameworkCore;
+﻿using System.ComponentModel.DataAnnotations;
 
-namespace HotelApp.Entities
+namespace HotelApp.DataAccess.Entities
 {
     public class User
     {

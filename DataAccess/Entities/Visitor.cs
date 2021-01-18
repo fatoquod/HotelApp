@@ -1,8 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.Runtime.CompilerServices;
 
-namespace HotelApp.Entities
+namespace HotelApp.DataAccess.Entities
 {
     public class Visitor
     {

@@ -9,33 +9,32 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Reflection;
 using System.IO;
+using HotelApp.DataAccess;
+using HotelApp.Extensions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
 
 namespace HotelApp
 {
     public class Startup
     {
-      
-        public void ConfigureServices(IServiceCollection services)
+        private readonly IConfiguration _configuration;
+
+        public Startup(IConfiguration configuration)
         {
-            services.AddDbContext<HotelContext>();
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Version = "v1",
-                    Title = "Hotel API",
-                });
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                c.IncludeXmlComments(xmlPath);
-            });
-           
+            _configuration = configuration;
         }
 
-      
+        public void ConfigureServices(IServiceCollection services)
+        {
+            services.AddControllers();
+            services
+                .ConfigureDbContext(_configuration)
+                .ConfigureSwagger();
+            services.ConfigureServicesHotelApp();
+        }
+        
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
