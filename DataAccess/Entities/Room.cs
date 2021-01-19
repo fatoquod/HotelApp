@@ -13,6 +13,6 @@ namespace HotelApp.DataAccess.Entities
         public virtual RoomType RoomType { get; set; }
         public int? RoomStateId { get; set; }
         public virtual RoomState RoomState { get; set; }
-        public ICollection<Visitor> Visitors { get; set; }
+        public ICollection<Visitor> Visitors { get; set; } // add virtual
     }
 }
